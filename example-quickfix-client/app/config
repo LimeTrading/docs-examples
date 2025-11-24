@@ -1,0 +1,42 @@
+# This is a client (initiator)
+[DEFAULT]
+DefaultApplVerID=FIX.4.2
+ #settings which apply to all the Sessions.
+ConnectionType=initiator
+ # FIX messages have a sequence ID, which shouldn't be used for uniqueness as specification doesn't guarantee anything about them. If Y is provided every time logon message is sent, server will reset the sequence.
+FileLogPath=./Logs/
+ #Path where logs will be written
+StartTime=00:00:00
+ # Time when session starts and ends
+EndTime=00:00:00
+UseDataDictionary=Y
+ #Time in seconds before your session will expire, keep sending heartbeat requests if you don't want it to expire
+ReconnectInterval=60
+LogoutTimeout=5
+LogonTimeout=30
+ # Time in seconds before reconnecting
+#ResetOnLogon=Y
+#ResetOnLogout=Y
+#ResetOnDisconnect=Y
+SendRedundantResendRequests=Y
+# RefreshOnLogon=Y
+SocketNodelay=N
+# PersistMessages=Y
+ValidateUserDefinedFields=N
+ValidateFieldsOutOfOrder=N
+# CheckLatency=Y
+
+# session definition
+[SESSION]
+BeginString=FIX.4.2
+SenderCompID=MAYFLOWER_TEST
+TargetCompID=LIME
+HeartBtInt=15
+SocketConnectPort=7000
+SocketConnectHost=74.120.50.45
+# DataDictionary=./spec/FIX43.xml
+FileStorePath=./Sessions/
+LogonTag=553=MAYFLOWER
+LogonTag1=554=limeMAYFLOWER
+LogonTag2=141=N
+#LogonTag2=34=30
